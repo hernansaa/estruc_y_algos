@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1709902801 source:/home/hernansaa/Documents/UP/estruc_algo/entrega/entrega.c
+	<stdio.h>
+	<stdlib.h>
+
