@@ -2,8 +2,6 @@
 palabras tienen más de 3 letras*/
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 int main(){
 
@@ -11,7 +9,6 @@ int main(){
 
   printf("Ingrese una texto terminado en un punto.\n");
   c = getchar();
-
 
   while (c != '.'){
     
