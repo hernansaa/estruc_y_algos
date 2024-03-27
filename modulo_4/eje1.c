@@ -1,28 +1,42 @@
+/*Leer un texto carácter a carácter, terminado en PUNTO. Mostrar cuántas
+palabras tienen más de 3 letras*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 int main(){
 
-  int i;
-  char nom [30], mejor [30];
-  float prom, auxprom;
+  int c, cont=0, contp=0;
 
-  auxprom = 0.0;
-  
-  for ( i = 1; i <= 10; i ++){
+  printf("Ingrese una texto terminado en un punto.\n");
+  c = getchar();
 
-    printf ("Ingrese el nombre del alumno:");
-    scanf ( " %[^\n]", nom);
-    printf ("Su promedio es:");
-    scanf ("%f", & prom);
-      if (prom > auxprom){
-        auxprom = prom;
-        strcpy (mejor, nom);
-      }
+
+  while (c != '.'){
+    
+    while (c != ' ' && c != '.'){
+      cont++;
+      putchar(c);
+      c = getchar();
+    }
+    
+    if (cont > 3){
+      contp++;
+    }
+    
+    printf(" (%d - ", cont);
+    printf("%d)\n", contp);
+
+    if (c == ' '){
+      // Leer el siguiente caracter si es un espacio.
+      c = getchar();
+    }
+    
+    cont = 0;
   }
-  
-  printf ("El mejor alumno es %s con un promedio de %.2f", mejor, auxprom);
- 
+
+  printf("La cantidad de palabras con mas de 3 letras es: %d\n", contp);
+
   return 0;
 }
