@@ -3,7 +3,6 @@ blanco y eliminando las palabras de 1 letra.*/
 
 #include <stdio.h>
 
-
 int main(){
 
   int c, contc=0, contp=0;
