@@ -12,19 +12,16 @@ int main(){
     while (c != ' ' && c != '.'){
       ultima = c;
       putchar(c);
-      c = getchar();
       if (c == ' ')
         putchar('x');
+      c = getchar();
     }
 
-
     printf(" ");
-
 
     if (c == ' ')
       c = getchar();
 
-  
   }
 
 
