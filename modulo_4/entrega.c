@@ -18,12 +18,15 @@ Recuerde modularizar su programa*/
 
 int main(){
 
-  int c, contc=0, contp=0, a=0, e=0, i=0, o=0, u=0;
+  int c, primerc, ultimoc, contc=0, contp=0, a=0, e=0, i=0, o=0, u=0;
+  float acum=0, contpprom=0;
 
   printf("Escribir un texto hasta un PUNTO:\n");
   c = getchar();
 
   while (c != '.'){
+
+    primerc = c;
 
     while (c != ' ' && c != '.'){
       putchar(c);
@@ -40,11 +43,12 @@ int main(){
       if (c == 'u')
         u = 1;
       
+      ultimoc = c;
       contc++;
       c = getchar();
     }
 
-    printf(" (longitud: %d)", contc);
+    printf(" (longitud: %d, 1er caracter: %d, Ultimo caracter: %d)", contc, primerc, ultimoc);
 
     // Verifica que la palabra sea par y que esten todas las vocales.
     if (contc % 2 == 0){
@@ -57,8 +61,14 @@ int main(){
         printf("#No tiene todas las vocales.\n\n");
     }
     else
-      printf("\n#No es par, entonces no verifica esa condicion.\n\n");
+      printf("\n#No es par, entonces no verifica esa condicion para verificar vocales.\n\n");
 
+    // Calcula el promedio de las palabras comenzadas en 'A' y finalizadas con 'N'.
+    if (primerc == 'A' && ultimoc == 'N'){
+      acum = acum + contc;
+      contpprom++;
+      printf("\nEl acumulador de longitudes esta en: %f\n\n", acum);
+    }
 
     // Resetea los valores de las vocales.
     a = 0;
@@ -70,11 +80,17 @@ int main(){
     //Resetea el contardor de caracteres.
     contc = 0;
 
+    // Resetea primer y ultimo caracter.
+    primerc = 0;
+    ultimoc = 0;
+
     if (c == ' ')
       c = getchar();
 
   }
 
-  printf("La cantidad de palabras de longitud par con todas las vocales es: %d\n", contp);
+  printf("##La cantidad de palabras de longitud par con todas las vocales es: %d\n", contp);
+  printf("##El promedio de longitud de palabras comenzadas con A y terminadas con N es: %f\n", acum / contpprom);
+  
   return 0;
 }
