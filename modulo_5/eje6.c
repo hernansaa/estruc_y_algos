@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 
+
 void cargar(int a[10], int n){
 
   int i=0, num, cont=0;
