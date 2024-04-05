@@ -14,10 +14,10 @@ int main(){
 
     while (c != ' ' && c != '.'){
       if (c == 'v'){
-        printf("b");
+        printf("X");
         c=getchar();
         if (c == 'l')
-           printf("l");
+           printf("Z");
       }
       else 
         putchar(c);
