@@ -1,5 +1,11 @@
-/* 7. Diseñar un algoritmo recursivo que nos permita obtener el determinante de una
-matriz cuadrada de dimensión n.*/
+/* 7. Diseñar un sivo que nos permita obtener el determinante de una
+ * matriz cuadrada de dimensión n.*/
+
+/* Segun mi investigacion: El determinante de una matriz cuadrada —matriz con 
+ * el mismo número de filas que de columnas— se obtiene de restar la multiplicación
+ * de los elementos de la diagonal principal de la matriz y la multiplicación de
+ * los elementos de la diagonal secundaria de la misma matriz.*/
+
 
 #include <stdio.h>
 
@@ -39,7 +45,6 @@ int diagPrincipal(int a[10][10], int i, int j, int n){
   printf("%d\n", a[i][j]);
 
   return diagPrincipal(a, i+1, j+1, n) * a[i][j];
-
 }
 
 
@@ -50,9 +55,7 @@ int diagSecundaria(int a[10][10], int i, int j, int n){
 
   printf("%d\n", a[i][j]);
 
-
   return diagSecundaria(a, i+1, j-1, n) * a[i][j];
-
 }
 
 
