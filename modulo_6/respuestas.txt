@@ -1,0 +1,20 @@
+Guia de Ejercicios
+
+1) Imprimira 5 y 4. Correspondientes a la variable punt y la variable x respectivamente.
+
+2) 3  9
+
+3) 3  9
+
+4) 9,2,3,4,5
+
+5) y 6) Resueltos en archivos aparte.
+
+7) 
+  a) x es la variable 
+  b) El vector + 2 int (VER)
+  c) 
+  
+
+
+
