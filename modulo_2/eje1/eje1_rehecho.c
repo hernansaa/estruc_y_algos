@@ -9,7 +9,9 @@ c) Mostar las ciudades en forma ordenada de menor a mayor según lacantidad de p
 vendidos */
 
 #include <stdio.h>
+#include <string.h>
 
+void ordernarAscendente(int vec[], char ciudad[][30], int n);
 int calcularPorcentaje(int capacidad_avion[], int cant_pasajes_vendidos[], int ciudad_index);
 int encontrarMax(int vec[], int n);
 int cargar(int dia_vuelo[], char nombre_ciudad[][30], int capacidad_avion[], int cant_pasajes_vendidos[]);
@@ -27,10 +29,10 @@ int main()
     
     max_index = encontrarMax(cant_pasajes_vendidos, cant);
     
-    printf("DIA    VALOR\n");
+    printf("\nDIA    VALOR\n");
     mostrarInt(dia_vuelo, cant);
     
-    printf("CIUDAD    VALOR\n");
+    printf("\nCIUDAD    VALOR\n");
     mostrarStr(nombre_ciudad, cant);
     
     printf("\nCiudad y dia mayor pasajes vendidos: %s (%d pasajes vendidos)  \n", nombre_ciudad[max_index], cant_pasajes_vendidos[max_index]);
@@ -38,11 +40,43 @@ int main()
     printf("\nPorcentaje pasajes vendidos de esa ciudad: ");
     printf("%d", calcularPorcentaje(capacidad_avion, cant_pasajes_vendidos, max_index));
     
+    printf("\n\nOrdenenar de Menor a Mayor: ");
+    ordernarAscendente(cant_pasajes_vendidos, nombre_ciudad, cant);
+    
    return 0; 
 }
 
 
 // FUNCIONES UTILITARIAS
+
+void ordernarAscendente(int vec[], char ciudad[][30], int n)
+{
+    int i, j, aux;
+    char aux_ciudad[30];
+    
+    for (i=0; i<n-1; i++)
+    {
+        for (j=i+1; j<n; j++)
+        {
+            if (vec[i] > vec[j])
+            {
+                aux = vec[i];
+                vec[i] = vec[j];
+                vec[j] = aux;
+                
+                strcpy(aux_ciudad, ciudad[i]);
+                strcpy(ciudad[i], ciudad[j]);
+                strcpy(ciudad[j], aux_ciudad);
+            }
+        }
+    }
+    
+    for (i=0; i<n; i++)
+    {
+        printf("\nCiudad: %s    Pasajes: %d", ciudad[i], vec[i]);    
+    }
+}
+
 
 int calcularPorcentaje(int capacidad_avion[], int cant_pasajes_vendidos[], int ciudad_index)
 {
@@ -112,3 +146,5 @@ void  mostrarStr(char vec[][30], int n)
         printf("%8d %8s \n", i, vec[i]);
     }
 }
+
+
