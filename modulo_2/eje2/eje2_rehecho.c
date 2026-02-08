@@ -7,7 +7,7 @@ números negativos. Mostrarlo.*/
 
 void cargar(int vec[]);
 void mostrar(int vec[], int n);
-void mostrarMayores(int vec[], int n);
+void calcularMayores(int vec[], int n);
 
 int main() {
     
@@ -15,6 +15,11 @@ int main() {
     
     cargar(vec);
     mostrar(vec, n);
+    
+    printf("Mostrar primeros 4 elementos mayores: \n");
+    calcularMayores(vec, n);
+    mostrar(vec, 4);
+    
     
 }
 
@@ -29,7 +34,8 @@ void mostrar(int vec[], int n){
     }
 }
 
-void mostrarMayores(int vec[], int n) {
+
+void calcularMayores(int vec[], int n) {
     
     int i, j, aux;
     
@@ -44,7 +50,6 @@ void mostrarMayores(int vec[], int n) {
         }
     }
 }
-
 
 
 void cargar(int vec[]) {
