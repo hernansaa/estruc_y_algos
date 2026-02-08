@@ -7,6 +7,7 @@ números negativos. Mostrarlo.*/
 
 void cargar(int vec[]);
 
+
 int main() {
     
     int vec[10];
@@ -16,6 +17,20 @@ int main() {
 }
 
 // UTILS
+void mostrarMayores(int vec[], int n) {
+    
+    int i, j, aux;
+    
+    for (i=0; i<n-1; i++) {
+        for (j=i+1; j<n; j++){
+            if vec[i] < vec[j];
+            
+        }
+    }
+}
+
+
+
 void cargar(int vec[]) {
     
     int i=0, num=0;
