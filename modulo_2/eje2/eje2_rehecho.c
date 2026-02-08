@@ -11,13 +11,24 @@ void mostrarMayores(int vec[], int n);
 
 int main() {
     
-    int vec[10];
+    int vec[10], n=10;
     
     cargar(vec);
+    mostrar(vec, n);
     
 }
 
 // UTILS
+void mostrar(int vec[], int n){
+    
+    int i;
+    
+    printf("INDEX    VALOR\n");
+    for (i=0; i<n; i++){
+        printf("%8d %8d \n", i, vec[i]);    
+    }
+}
+
 void mostrarMayores(int vec[], int n) {
     
     int i, j, aux;
