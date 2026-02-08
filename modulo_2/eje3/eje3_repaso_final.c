@@ -17,9 +17,11 @@ de tal manera que la información siga ordenada por número de cuenta.
 (desplazando los elementos a derecha). */
 
 #include <stdio.h>
+#include <string.h>
 
 int cargar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float saldo[]);
 void mostrar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float saldo[], int dim);
+void ordenar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float saldo[], int dim);
 
 
 int main() {
@@ -28,9 +30,15 @@ int main() {
     float saldo[10];
     char nom_ape[10][50];
     
+    // CARGAR Y MOSTRAR DATOS
     dim = cargar(nro_cuenta, nom_ape, tipo_cuenta, saldo);
+    printf("\nDatos cargados: \n");
     mostrar(nro_cuenta, nom_ape, tipo_cuenta, saldo, dim);
     
+    // ORDERNAR DATOS DE MENOR A MAYOR POR NUMERO DE CUENTA
+    printf("\nDatos ordenados de menor a mayor por nro de cuenta: \n");
+    ordenar(nro_cuenta, nom_ape, tipo_cuenta, saldo, dim);
+    mostrar(nro_cuenta, nom_ape, tipo_cuenta, saldo, dim);
 }
 
 // UTILS
@@ -73,7 +81,36 @@ void mostrar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float sald
 }
 
 
-
+void ordenar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float saldo[], int dim) {
+    
+    int i, j, aux_nro_cuenta, aux_tipo_cuenta;
+    float aux_saldo;
+    char aux_nom[50];
+    
+    for (i=0; i<dim-1; i++) {
+        for (j=i+1; j<dim; j++) {
+            if (nro_cuenta[i] > nro_cuenta[j]) {
+                
+                aux_nro_cuenta = nro_cuenta[i];
+                nro_cuenta[i] = nro_cuenta[j];
+                nro_cuenta[j] = aux_nro_cuenta;
+                
+                strcpy(aux_nom, nom_ape[i]);
+                strcpy(nom_ape[i], nom_ape[j]);
+                strcpy(nom_ape[j], aux_nom);
+                
+                aux_tipo_cuenta = tipo_cuenta[i];
+                tipo_cuenta[i] = tipo_cuenta[j];
+                tipo_cuenta[j] = aux_tipo_cuenta;
+                
+                aux_saldo = saldo[i];
+                saldo[i] = saldo[j];
+                saldo[j] = aux_saldo;
+            }
+        }
+    }
+    
+}
 
 
 
