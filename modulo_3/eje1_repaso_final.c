@@ -16,11 +16,12 @@ void mostrar(int a[][10], int dim);
 int suma(int a[][10], int dim);
 int maximo(int a[][10], int dim);
 float promedio(int a[][10], int dim);
+int sumaDiagPrinc(int a[][10], int dim);
 
 
 int main() {
     
-    int matriz[10][10], dim=4, sum=0, max=0; 
+    int matriz[10][10], dim=4, sum=0, max=0, sum_diag_princ=0; 
     float prom=0;
     
     cargar(matriz, dim);
@@ -34,6 +35,9 @@ int main() {
     
     prom = promedio(matriz, dim);
     printf("\nPromedio multiplos de 5: %f", prom);
+    
+    sum_diag_princ = sumaDiagPrinc(matriz, dim);
+    printf("\nSuma Diagonal Principal: %d", sum_diag_princ);
     
     return 0;
 }
@@ -103,4 +107,19 @@ float promedio(int a[][10], int dim) {
     
     return (float)acum / (float)cont;
 }
+
+int sumaDiagPrinc(int a[][10], int dim) {
+    
+    int i=0, j=0, sum=0;
+    
+    for (i=0; i<dim; i++) {
+        sum += a[i][j];
+        j++;
+    }
+    
+    return sum;
+}
+
+
+
 
