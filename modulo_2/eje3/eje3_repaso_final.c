@@ -23,11 +23,13 @@ int cargar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float saldo[
 void mostrar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float saldo[], int dim);
 void ordenar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float saldo[], int dim);
 int obtenerMinimoSaldo(float saldo[], int dim);
+int generar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float saldo[], float saldos_negativos[], int dim);
+void mostrarVectorFloat(float vec[], int dim);
 
 int main() {
     
-    int nro_cuenta[10], tipo_cuenta[10], dim, min_i; 
-    float saldo[10];
+    int nro_cuenta[10], tipo_cuenta[10], dim, min_i, dim_a; 
+    float saldo[10], saldos_negativos[10];
     char nom_ape[10][50];
     
     // CARGAR Y MOSTRAR DATOS
@@ -40,11 +42,14 @@ int main() {
     ordenar(nro_cuenta, nom_ape, tipo_cuenta, saldo, dim);
     mostrar(nro_cuenta, nom_ape, tipo_cuenta, saldo, dim);
     
-    
+    // CLIENTE MENOR SALDO
     min_i = obtenerMinimoSaldo(saldo, dim);
     printf("\nNombre y apellido cliente menor saldo: %s\n", nom_ape[min_i]);
-    printf("\nTipo de cuenta cliente menor saldo: %s\n", tipo_cuenta[min_i]);
+    printf("\nTipo de cuenta cliente menor saldo: %d\n", tipo_cuenta[min_i]);
     
+    // GENERAR VECTOR CON DATOS CLIENTES CON SALDOS NEGATIVOS
+    dim_a = generar(nro_cuenta, nom_ape, tipo_cuenta, saldo, saldos_negativos, dim);
+    mostrarVectorFloat(saldos_negativos, dim_a);
     
 }
 
@@ -136,5 +141,30 @@ int obtenerMinimoSaldo(float saldo[], int dim) {
 }
 
 
+int generar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float saldo[], float saldos_negativos[], int dim) {
+    
+    int i, j=0;
+    
+    for (i=0; i<dim; i++) {
+        
+        if (saldo[i] < 0) {
+            saldos_negativos[j] = saldo[i];
+            j++;
+        }
+    }
+    
+    return j;
+}
+
+
+void mostrarVectorFloat(float vec[], int dim) {
+    
+    int i;
+    
+    printf("INDEX   SALDOS NEGATIVOS\n");
+    for (i=0; i<dim; i++) {
+        printf("%5d %10.2f", i, vec[i]);
+    }
+}
 
 
