@@ -22,11 +22,11 @@ de tal manera que la información siga ordenada por número de cuenta.
 int cargar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float saldo[]);
 void mostrar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float saldo[], int dim);
 void ordenar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float saldo[], int dim);
-
+int obtenerMinimoSaldo(float saldo[], int dim);
 
 int main() {
     
-    int nro_cuenta[10], tipo_cuenta[10], dim; 
+    int nro_cuenta[10], tipo_cuenta[10], dim, min_i; 
     float saldo[10];
     char nom_ape[10][50];
     
@@ -39,6 +39,13 @@ int main() {
     printf("\nDatos ordenados de menor a mayor por nro de cuenta: \n");
     ordenar(nro_cuenta, nom_ape, tipo_cuenta, saldo, dim);
     mostrar(nro_cuenta, nom_ape, tipo_cuenta, saldo, dim);
+    
+    
+    min_i = obtenerMinimoSaldo(saldo, dim);
+    printf("\nNombre y apellido cliente menor saldo: %s\n", nom_ape[min_i]);
+    printf("\nTipo de cuenta cliente menor saldo: %s\n", tipo_cuenta[min_i]);
+    
+    
 }
 
 // UTILS
@@ -111,6 +118,23 @@ void ordenar(int nro_cuenta[], char nom_ape[][50], int tipo_cuenta[], float sald
     }
     
 }
+
+
+int obtenerMinimoSaldo(float saldo[], int dim) {
+    
+    int i, min_i=0;
+    float min=saldo[0];
+    
+    for (i=0; i<dim; i++) {
+        if (saldo[i] < min) {
+            min = saldo[i];
+            min_i = i;
+        }
+    }
+
+    return min_i;
+}
+
 
 
 
