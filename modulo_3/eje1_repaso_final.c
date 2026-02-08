@@ -13,13 +13,23 @@
 
 void cargar(int a[][10], int dim);
 void mostrar(int a[][10], int dim);
+int suma(int a[][10], int dim);
+int maximo(int a[][10], int dim);
+float promedio(int a[][10], int dim);
+
 
 int main() {
     
-    int matriz[10][10], dim=4;
+    int matriz[10][10], dim=4, sum=0, max=0;
     
     cargar(matriz, dim);
     mostrar(matriz, dim);
+    
+    sum = suma(matriz, dim);
+    printf("\nSuma: %d", sum);
+    
+    max = maximo(matriz, dim);
+    printf("\nMax: %d", max);
     
     return 0;
 }
@@ -49,4 +59,27 @@ void mostrar(int a[][10], int dim) {
         }
     }
     printf("\n");
+}
+
+int suma(int a[][10], int dim) {
+    
+    int i=1, j=0, sum=0;
+    
+    for (j=0; j<dim; j++) {
+        sum += a[i][j];
+    }
+    
+    return sum;
+}
+
+int maximo(int a[][10], int dim) {
+    
+    int i=0, j=1, max=0;
+    
+    for (i=0; i<dim; i++) {
+        if (a[i][j] > max) {
+            max = a[i][j];
+        }
+    }
+    return max;
 }
