@@ -20,7 +20,8 @@ float promedio(int a[][10], int dim);
 
 int main() {
     
-    int matriz[10][10], dim=4, sum=0, max=0;
+    int matriz[10][10], dim=4, sum=0, max=0; 
+    float prom=0;
     
     cargar(matriz, dim);
     mostrar(matriz, dim);
@@ -30,6 +31,9 @@ int main() {
     
     max = maximo(matriz, dim);
     printf("\nMax: %d", max);
+    
+    prom = promedio(matriz, dim);
+    printf("\nPromedio multiplos de 5: %f", prom);
     
     return 0;
 }
@@ -83,3 +87,20 @@ int maximo(int a[][10], int dim) {
     }
     return max;
 }
+
+float promedio(int a[][10], int dim) {
+    
+    int i=0, j=0, cont=0, acum=0;
+    
+    for (i=0; i<dim; i++) {
+        for (j=0; j<dim; j++) {
+            if (a[i][j] % 5 == 0) {
+                acum += a[i][j];
+                cont++;
+            }
+        }
+    }
+    
+    return (float)acum / (float)cont;
+}
+
