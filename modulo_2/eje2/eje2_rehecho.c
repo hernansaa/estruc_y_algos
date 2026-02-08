@@ -8,10 +8,11 @@ números negativos. Mostrarlo.*/
 void cargar(int vec[]);
 void mostrar(int vec[], int n);
 void calcularMayores(int vec[], int n);
+void intercalar(int vec[], int vec_a[], int n);
 
 int main() {
     
-    int vec[10], n=10;
+    int vec[10], vec_a[10], n=10;
     
     cargar(vec);
     mostrar(vec, n);
@@ -20,10 +21,38 @@ int main() {
     calcularMayores(vec, n);
     mostrar(vec, 4);
     
+    printf("Intercalar: \n");
+    intercalar(vec, vec_a, n);
+    mostrar(vec_a, n);
     
+    
+   
+    return 0;    
 }
 
 // UTILS
+void intercalar(int vec[], int vec_a[], int n) {
+    
+    int i=0, j=0;
+    
+    for (i=0; i<n; i++) {
+        if (vec[i] > 0) {
+            vec_a[j] = vec[i];
+            j = j + 2;
+        }
+    }
+    
+    j=1;
+    
+    for (i=0; i<n; i++) {
+        if (vec[i] < 0) {
+            vec_a[j] = vec[i];
+            j = j + 2;
+        }
+    }
+}
+
+
 void mostrar(int vec[], int n){
     
     int i;
@@ -75,4 +104,5 @@ void cargar(int vec[]) {
     } while (i < 10);
         
 }
+
 
