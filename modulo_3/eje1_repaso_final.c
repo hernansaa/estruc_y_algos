@@ -17,6 +17,9 @@ int suma(int a[][10], int dim);
 int maximo(int a[][10], int dim);
 float promedio(int a[][10], int dim);
 int sumaDiagPrinc(int a[][10], int dim);
+void minimos(int a[][10], int dim);
+void mostarDiagSec(int a[][10], int dim);
+void mostrarDebajoDiagPrinc(int a[][10], int dim);
 
 
 int main() {
@@ -38,6 +41,12 @@ int main() {
     
     sum_diag_princ = sumaDiagPrinc(matriz, dim);
     printf("\nSuma Diagonal Principal: %d", sum_diag_princ);
+    
+    minimos(matriz, dim);
+    
+    mostarDiagSec(matriz, dim);
+    
+    mostrarDebajoDiagPrinc(matriz, dim);
     
     return 0;
 }
@@ -121,5 +130,43 @@ int sumaDiagPrinc(int a[][10], int dim) {
 }
 
 
+void minimos(int a[][10], int dim) {
+    
+    int i=0, j=0, min;
+    
+    for (i=0; i<dim; i++) {
+        
+        min = a[i][0];
+        
+        for (j=0; j<dim; j++) {
+            if (a[i][j] < min) {
+                min = a[i][j];
+            }
+        }
+        printf("\n-El minimo de la fila %d es: %d", i, min);
+    }
+    
+}
+
+
+void mostarDiagSec(int a[][10], int dim) {
+    
+    int i, j;
+    
+    for (i=0; i<dim; i++) {
+        j = (dim - 1) - i;
+        printf("\n\nElemento Diag Sec %d:%d = %d", i, j, a[i][j]);
+    }
+}
+
+
+void mostrarDebajoDiagPrinc(int a[][10], int dim) {
+    
+    int i;
+    
+    for (i=1; i<dim; i++) {
+        printf("\n\nElemento Debajo Diag Princ %d:%d = %d", i, i-1, a[i][i-1]);
+    }
+}
 
 
