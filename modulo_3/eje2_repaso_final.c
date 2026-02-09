@@ -10,11 +10,12 @@ void cargar(int m[][10], int dim);
 void mostrar(int m[][10], int dim);
 void mostrarTraspuesta(int m[][10], int dim);
 int sumaDiagPrinc(int m[][10], int dim);
+int sumaDiagSec(int m[][10], int dim);
 
 
 int main () {
     
-    int matriz[10][10], dim=0;
+    int matriz[10][10], dim=0, sum=0;
     
     printf("Ingresar numero de col/filas (n*n) de la matriz: ");
     scanf("%d", &dim);
@@ -26,6 +27,14 @@ int main () {
     
     printf("\n\nMostrar Matriz Traspuesta: \n");
     mostrarTraspuesta(matriz, dim);
+    
+    printf("\n\nSuma Diag Principal Matriz: \n");
+    sum = sumaDiagPrinc(matriz, dim);
+    printf("%d", sum);
+    
+    printf("\n\nSuma Diag Secundaria Matriz: \n");
+    sum = sumaDiagSec(matriz, dim);
+    printf("%d", sum);
 }
 
 
@@ -66,5 +75,33 @@ void mostrarTraspuesta(int m[][10], int dim) {
         }
     }    
 }
+
+
+int sumaDiagPrinc(int m[][10], int dim) {
+    
+    int i, sum=0;
+    
+    for (i=0; i<dim; i++) {
+        sum += m[i][i];
+    }
+    
+    return sum;
+}
+
+int sumaDiagSec(int m[][10], int dim) {
+    
+    int i, j, sum=0;
+    
+    for (i=0; i<dim; i++) {
+        j = (dim - 1) - i;
+        sum += m[i][j];
+    }
+    
+    return sum;
+}
+
+
+
+
 
 
