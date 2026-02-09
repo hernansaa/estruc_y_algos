@@ -9,13 +9,14 @@ d) Determinar cuántos números primos hay en la matriz */
 void cargar(int m[][10], int dim);
 void mostrar(int m[][10], int dim);
 void mostrarTraspuesta(int m[][10], int dim);
-int sumaDiagPrinc(int m[][10], int dim);
-int sumaDiagSec(int m[][10], int dim);
+float promDiagPrinc(int m[][10], int dim);
+float promDiagSec(int m[][10], int dim);
 
 
 int main () {
     
-    int matriz[10][10], dim=0, sum=0;
+    int matriz[10][10], dim=0;
+    float prom=0;
     
     printf("Ingresar numero de col/filas (n*n) de la matriz: ");
     scanf("%d", &dim);
@@ -28,13 +29,13 @@ int main () {
     printf("\n\nMostrar Matriz Traspuesta: \n");
     mostrarTraspuesta(matriz, dim);
     
-    printf("\n\nSuma Diag Principal Matriz: \n");
-    sum = sumaDiagPrinc(matriz, dim);
-    printf("%d", sum);
+    printf("\n\nProm Diag Principal Matriz: \n");
+    prom = promDiagPrinc(matriz, dim);
+    printf("%f", prom);
     
-    printf("\n\nSuma Diag Secundaria Matriz: \n");
-    sum = sumaDiagSec(matriz, dim);
-    printf("%d", sum);
+    printf("\n\nProm Diag Secundaria Matriz: \n");
+    prom = promDiagSec(matriz, dim);
+    printf("%f", prom);
 }
 
 
@@ -77,7 +78,7 @@ void mostrarTraspuesta(int m[][10], int dim) {
 }
 
 
-int sumaDiagPrinc(int m[][10], int dim) {
+float promDiagPrinc(int m[][10], int dim) {
     
     int i, sum=0;
     
@@ -85,10 +86,10 @@ int sumaDiagPrinc(int m[][10], int dim) {
         sum += m[i][i];
     }
     
-    return sum;
+    return (float)sum / (float)dim;
 }
 
-int sumaDiagSec(int m[][10], int dim) {
+float promDiagSec(int m[][10], int dim) {
     
     int i, j, sum=0;
     
@@ -97,8 +98,13 @@ int sumaDiagSec(int m[][10], int dim) {
         sum += m[i][j];
     }
     
-    return sum;
+    return (float)sum / (float)dim;
 }
+
+
+
+
+
 
 
 
