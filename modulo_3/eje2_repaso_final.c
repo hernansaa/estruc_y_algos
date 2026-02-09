@@ -2,7 +2,7 @@
 a) la matriz transpuesta
 b) El promedio de los elementos de las dos diagonales (principal y secundaria)
 c) Multiplicar la matriz por su transpuesta.
-d) Determinar cuántos números primos hay en la matriz */
+d) Determinar cuántos números primos hay en la matriz (esPrimo() estaria FALTA HACER EL CONTEO ) */
 
 #include <stdio.h>
 
@@ -11,7 +11,7 @@ void mostrar(int m[][10], int dim);
 void mostrarTraspuesta(int m[][10], int dim);
 float promDiagPrinc(int m[][10], int dim);
 float promDiagSec(int m[][10], int dim);
-
+int esPrimo(int n);
 
 int main () {
     
@@ -100,6 +100,27 @@ float promDiagSec(int m[][10], int dim) {
     
     return (float)sum / (float)dim;
 }
+
+
+int esPrimo(int n) {
+    
+    int i;
+    
+    if (n < 2) {
+        return 0;
+    }
+    
+    for (i=0; i*i <= n; i++) {
+        if (n % i == 0) {
+            return 0;
+        }
+    }
+    
+    return 1;
+}
+
+
+
 
 
 
