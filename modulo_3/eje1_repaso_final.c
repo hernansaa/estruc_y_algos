@@ -20,6 +20,7 @@ int sumaDiagPrinc(int a[][10], int dim);
 void minimos(int a[][10], int dim);
 void mostarDiagSec(int a[][10], int dim);
 void mostrarDebajoDiagPrinc(int a[][10], int dim);
+int esSimetrica(int a[][10], int dim);
 
 
 int main() {
@@ -47,6 +48,12 @@ int main() {
     mostarDiagSec(matriz, dim);
     
     mostrarDebajoDiagPrinc(matriz, dim);
+    
+    if (esSimetrica(matriz, dim)) {
+        printf("\nEs simetrica.");
+    } else {
+        printf("\nNo es simetrica.");
+    }
     
     return 0;
 }
@@ -168,5 +175,26 @@ void mostrarDebajoDiagPrinc(int a[][10], int dim) {
         printf("\n\nElemento Debajo Diag Princ %d:%d = %d", i, i-1, a[i][i-1]);
     }
 }
+
+
+int esSimetrica(int a[][10], int dim) {
+    
+    int i, j;
+    
+    for (i=0; i<dim; i++) {
+        for (j=i+1; j<dim; j++) {
+            if (a[i][j] != a[j][1]) {
+                return 0; // No es simetrica
+            }
+        }
+    }
+    
+    return 1; // Es simetrica
+}
+
+
+
+
+
 
 
