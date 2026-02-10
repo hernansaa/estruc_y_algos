@@ -13,7 +13,7 @@ int main() {
     
     while (c != '.') {
         
-        while (c != ' ' && c != '.'){
+        while (c != ' ' && c != '.') {
             contl++;
             putchar(c);
             ult = c;
@@ -35,4 +35,5 @@ int main() {
     
     printf("\nCantidad de palabras con mas de 2 letras y terminan con s: %d", contp);
     
+    return 0;
 }
